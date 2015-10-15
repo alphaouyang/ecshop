@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{insert_scripts files='jquery.json.js,transport.js'}
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/touchslider.dev.js"></script>
+{insert_scripts files='common.js'}
+</head>
+<body id="page_goods">
+<script language="javascript"> 
+<!--
+/*屏蔽所有的js错误*/
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+function tiaozhuan()
+{ 
+var thisurl = window.location.href;
+location.href='share_goods.php?content={$goods.goods_style_name}&pics={$goods.goods_img}&gid={$goods.goods_id}&url='+thisurl;
+}
+</script>
+<div id="Cheader" style="">
+  <div id="header" class="header_03">
+    <div class="back"> <a href="./" class="arrow">首页</a> </div>
+    <div class="tit" style="">
+      <h3>{$lang.exchange}</h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="wrapper" class="xm_app">
+  <div id="viewport" class="viewport">
+   <div class="product_view">
+      <div class="box box_01">
+        <div class="product_swipe"> <!-- 单品介绍图片 -->
+        <!-- #BeginLibraryItem "/library/goods_gallery.lbi" --><!-- #EndLibraryItem -->
+        </div>
+     <form action="exchange.php?act=buy" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+        <div class="product_info">
+          <div class="info info_right">
+            <h3 class="name">{$goods.goods_style_name}</h3>
+            <div class="right">
+              <a href="javascript:collect({$goods.goods_id})" ><div id="favorite_add" class="favorite_add"><span>收藏</span></div></a>
+              <a onClick="tiaozhuan()"><div id="pro_share" class="share"><span>分享</span></div></a>
+            </div>
+          </div>
+          
+ 
+    <span class="price" >{$lang.exchange_integral}{$goods.exchange_integral}</span>
+
+<div class="star comment_star">
+<div class="star_box">
+<div class="star_bar">
+<div  class="star_num width{$goods.comment_rank}"></div>
+</div></div></div>
+
+<section class="s-buy open ui-section-box" id="search_ka">
+  
+    <div class="fields">
+      
+      <div class="ui-sku">
+ {if $specification}                
+    {foreach from=$specification item=spec key=spec_key name=specification}
+        <div class="ui-sku-prop" {if $spec_key eq $attr_same.attr_id}style="display:none;"{/if}>
+          <h2>可选{$spec.name}：</h2>
+          <div class="items">
+          {if $spec.attr_type eq 1}
+          {foreach from=$spec.values item=value key=key}
+          <a {if $key eq 0}class="hover"{/if} href="javascript:;" name="{$value.id}" onclick="changeAtt(this);" for="spec_value_{$value.id}" title="{if $value.price gt 0}{$lang.plus}{$value.format_price|abs}{elseif $value.price lt 0}{$lang.minus}{$value.format_price|abs}{/if}"><input style="display:none" id="spec_value_{$value.id}" type="radio" name="spec_{$spec_key}" value="{$value.id}" {if $key eq 0}checked{/if} />
+          {$value.label}
+          
+          </a>
+           {/foreach}
+           {else}
+            {foreach from=$spec.values item=value key=key}
+          <a {if $key eq 0}class="hover"{/if} href="javascript:;" name="{$value.id}" onclick="changeAtt1(this)" for="spec_value_{$value.id}" title="{if $value.price gt 0}{$lang.plus}{$value.format_price|abs}{elseif $value.price lt 0}{$lang.minus}{$value.format_price|abs}{/if}"><input type="checkbox" style=" display:none" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if}/>
+{$value.label}
+           </a>
+           {/foreach}
+            {/if}
+          </div>
+        </div>
+        {/foreach}
+        {/if}
+      </div>
+              <script type="text/jscript">
+			  function click_search (){
+				  var search_ka = document.getElementById("search_ka");
+				  if (search_ka.className == "s-buy open ui-section-box"){
+					  search_ka.className = "s-buy ui-section-box";
+					  }else {
+						  search_ka.className = "s-buy open ui-section-box";
+						  }
+				  }
+function changeAtt(t) {
+t.lastChild.checked='checked';
+for (var i = 0; i<t.parentNode.childNodes.length;i++) {
+        if (t.parentNode.childNodes[i].className == 'hover') {
+            t.parentNode.childNodes[i].className = '';
+			t.childNodes[0].checked="checked";
+		}
+    }
+t.className = "hover";
+changePrice();
+}
+function changeAtt1(t) {
+t.lastChild.checked='checked';
+for (var i = 0; i<t.parentNode.childNodes.length;i++) {
+        if (t.className == 'hover') {
+            t.className = '';
+			t.childNodes[0].checked = false;
+		}
+		else{
+			t.className="hover";
+			t.childNodes[0].checked = true;
+		}
+		
+	
+}
+
+changePrice();
+}
+</script>
+
+      
+    </div>
+    
+</section>
+ </div>
+        <div class="product_addCart">
+          <input type="hidden" name="goods_id" value="{$goods.goods_id}" />
+         <a  class="button active_button" href="javascript:void(document.ECS_FORMBUY.submit())">立即兑换</a> </div>
+          </form>
+        
+      </div>
+      
+<script type="text/javascript">
+				/*第一种形式 第二种形式 更换显示样式*/
+				function setGoodsTab(name,cursel,n){
+				for(i=1;i<=n;i++){
+				var menu=document.getElementById(name+i);
+				var con=document.getElementById("user_"+name+"_"+i);
+				menu.className=i==cursel?"on":"";
+				con.style.display=i==cursel?"block":"none";
+				}
+				}
+				</script>
+      <div class="box box_02 tab_html">
+        <div class="tab_nav">
+          <ul>
+            <li><a href="javascript:;" class="tab_head on"   id="goods_ka1" onClick="setGoodsTab('goods_ka',1,3)">图片详情</a></li>
+            <li><a href="javascript:;" class="tab_head" id="goods_ka2" onClick="setGoodsTab('goods_ka',2,3)">用户评论</a></li>
+            <li><a href="javascript:;" class="tab_head" id="goods_ka3" onClick="setGoodsTab('goods_ka',3,3)">商品参数</a></li>
+          </ul>
+        </div>
+ <script>
+  $(document).ready(function(){
+                $('#product_desc img').each(function() {   
+                var maxWidth =$(document).width(); // 图片最大宽度 
+              	var ratio = 0;  // 缩放比例  
+                 var width = $(this).width();    // 图片实际宽度   
+                 var height = $(this).height();  // 图片实际高度     // 检查图片是否超宽   
+                 if(width > maxWidth){       
+                 ratio = maxWidth / width;   // 计算缩放比例       
+                 $(this).attr('width',maxWidth); // 设定实际显示宽度       
+                 height = parseInt(height * ratio);    // 计算等比例缩放后的高度 
+                 $(this).attr('height',height);  // 设定等比例缩放后的高度   
+                  }  
+             	});
+ });
+</script>
+        <div class="tab_product tab_item" id="user_goods_ka_1" style="display:block; ">
+          <div class="product_main"> <!-- 产品图片 -->
+            <div class="product_images product_desc" id="product_desc" >
+              {$goods.goods_desc}
+            </div>
+          </div>
+        </div>
+        <div class="tab_comment tab_item hide" id="user_goods_ka_2" style="display:none">
+  {if $coun12t > 0}
+        <div class="comment_detail comment_star h_box">
+    <div class="total_num">
+      <div class="gl h_box">
+        <p class="n"><strong>{$haopinglv}</strong></p>
+        <p class="p">%</p>
+      </div>
+      <div class="tip">
+        <div class="t">{$coun12t}人累计评价率</div>
+      </div>
+    </div>
+    <div class="total_bar">
+      <div class="h_box">
+        <div class="star_box">
+          <div class="star_bar">
+            <div style="width:100%" class="star_num"></div>
+          </div>
+        </div>
+        <p><span>{$wuxing}人</span></p>
+      </div>
+      <div class="h_box">
+        <div class="star_box">
+          <div class="star_bar">
+            <div style="width:80%" class="star_num"></div>
+          </div>
+        </div>
+        <p><span>{$sixing}人</span></p>
+      </div>
+      <div class="h_box">
+        <div class="star_box">
+          <div class="star_bar">
+            <div style="width:60%" class="star_num"></div>
+          </div>
+        </div>
+        <p><span>{$sanxing}人</span></p>
+      </div>
+      <div class="h_box">
+        <div class="star_box">
+          <div class="star_bar">
+            <div style="width:40%" class="star_num"></div>
+          </div>
+        </div>
+        <p><span>{$erxing}人</span></p>
+      </div>
+      <div class="h_box">
+        <div class="star_box">
+          <div class="star_bar">
+            <div style="width:20%" class="star_num"></div>
+          </div>
+        </div>
+        <p><span>{$yixing}人</span></p>
+      </div>
+    </div>
+  </div>
+  {/if}
+ <!-- #BeginLibraryItem "/library/comments.lbi" --><!-- #EndLibraryItem -->
+
+</div>
+
+        <div class="tab_attrs tab_item hide" id="user_goods_ka_3" style="display:none;">
+          
+         <ul class="product_attrs">
+           <!-- {foreach from=$properties item=property_group key=key} -->
+             <!-- {foreach from=$property_group item=property} -->
+         <li><span class="tit">{$property.name|escape:html}</span><span class="val">{$property.value}</span></li>
+          <!-- {/foreach}-->
+            <!-- {/foreach}-->
+         </ul>
+        </div>
+        
+        
+        
+      </div>
+      <!-- {if $bought_goods} -->
+      <div class="related_goods_view" style="padding-bottom:1em; margin-bottom:0;">
+        <div class="title">
+          <h3>买过此商品的用户还喜欢</h3>
+        </div>
+        <div class="related_goods_list">
+          <ul class="h_box">
+          <!--{foreach from=$bought_goods item=bought_goods_data}-->
+            <li class="flex_1"><a href="{$bought_goods_data.url}">
+              <div class="imgurl"><img src="{$bought_goods_data.goods_thumb}"></div>
+              <p class="price">  <!-- {if $bought_goods_data.promote_price neq 0} -->
+      {$bought_goods_data.formated_promote_price}
+        <!-- {else} -->
+      {$bought_goods_data.shop_price}
+        <!-- {/if} --></p>
+              </a></li>
+                <!-- {/foreach} -->
+            </ul>
+        </div>
+      </div>
+      <!-- {/if} -->
+      
+      <!-- {if $related_goods} -->
+      <div class="related_goods_view" >
+        <div class="title">
+          <h3>相关产品推荐</h3>
+        </div>
+        <div class="related_goods_list">
+          <ul class="h_box">
+          <!--{foreach from=$related_goods item=releated_goods_data}-->
+            <li class="flex_1"><a href="{$releated_goods_data.url}">
+              <div class="imgurl"><img src="{$releated_goods_data.goods_thumb}"></div>
+              <p class="price"><!-- {if $releated_goods_data.promote_price neq 0} -->
+      {$releated_goods_data.formated_promote_price}
+        <!-- {else} -->
+        {$releated_goods_data.shop_price}
+        <!-- {/if} --></p>
+              </a></li>
+                <!-- {/foreach} -->
+            </ul>
+        </div>
+      </div>
+      <!-- {/if} -->
+
+    </div>
+    <div id="productViewWeixinTip" class="weixin_share_tip"></div>
+    <!-- #BeginLibraryItem "/library/page_footer.lbi" --> <!-- #EndLibraryItem -->
+  </div>
+</div>
+<script type="text/javascript">
+<!-- {literal} -->
+onload = function()
+{
+  fixpng();
+}
+/*
+*选择信息处理
+*/
+
+function changeP(b, c) {
+	var frm=document.forms['ECS_FORMBUY'];
+	var cur_id="";
+    document.getElementById('spec_value_' + c).checked=true;
+	document.getElementById('url_' + c).className="selected";
+	for (var i = 0; i < frm.elements[b].length; i++) {
+		cur_id=frm.elements[b][i].id.substr(11);
+        document.getElementById('url_' + cur_id).className="";
+		if (frm.elements[b][i].checked)
+		{
+		   document.getElementById('url_' + c).className="selected";
+		}
+    }
+}
+</script>
+</body>
+
+</html>

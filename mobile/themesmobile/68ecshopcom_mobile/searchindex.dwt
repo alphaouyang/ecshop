@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css"/>
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<style>
+/*搜索弹出模块*/ 
+
+
+</style>
+<body style="background: rgb(235, 236, 237);">
+<div id="search_hide" class="search_hide">
+<div class="search_title">请输入您所搜索的关键字 <a href="./"><span class="close"> 关闭 </span></a> </div>
+<div class="search_body">
+  <div class="search_box">
+    <form action="search.php" method="post" id="searchForm" name="searchForm">
+      <div>
+        <input class="text" type="search" name="keywords" id="keywordBox" autofocus>
+        <button type="submit" value="搜 索" ></button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+</div>
+</body>
+
+</html>

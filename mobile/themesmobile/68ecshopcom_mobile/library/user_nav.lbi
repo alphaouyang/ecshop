@@ -1,0 +1,55 @@
+
+<div class="user_view_03">
+      <div class="photo f_w por ">
+          <div class="top_bg68">
+          		<span class="gray_div"></span><p>{$info.username}<br>{$rank_name}</p>
+          </div>
+          <div class="pay_information">
+            <img class="img" src="themesmobile/68ecshopcom_mobile/img/user68.png" width="118" height="90">
+         {insert name='member_info1'}
+          </div>
+	</div>
+      <div class="box box_02 mb20">
+        <div class="user_nav list_nav mlr20">
+          <ul>
+            <li class="items"><a class="lnk" href="user.php?act=order_list" >
+              <div class="un un_01">订单查询</div>
+              </a></li>
+             <li class="items"><a class="lnk" href="user.php?act=message_list">
+              <div class="un un_10">我的留言</div>
+              </a></li>
+              <li class="items"><a class="lnk" href="user.php?act=comment_list">
+              <div class="un un_06">评价商品</div>
+              </a></li>
+            <li class="items"><a class="lnk" href="user.php?act=collection_list">
+              <div class="un un_14">我的收藏</div>
+              </a></li>
+             <li class="items"><a class="lnk" href="user.php?act=account_detail">
+             <div class="un un_02">资金管理</div>
+              </a></li>
+          </ul>
+          <ul>
+          <li class="items"><a class="lnk" href="user.php?act=profile" >
+              <div class="un un_05">个人信息</div>
+              </a></li>
+            <li class="items"><a class="lnk" href="user.php?act=bonus">
+              <div class="un un_04">我的红包</div>
+              </a></li>
+            <li class="items"><a class="lnk" href="user.php?act=address_list">
+              <div class="un un_08">地址管理</div>
+              </a></li>
+            <li class="items"><a class="lnk" href="user.php?act=affiliate">
+              <div class="un un_16">我的推荐</div>
+              </a></li>
+            <li class="items"><a class="lnk" href="user.php?act=booking_list">
+              <div class="un un_15">缺货登记</div>
+              </a></li>
+          </ul>
+          <ul>
+          <li class="items"><a class="lnk" href="user.php?act=logout" >
+              <div class="un un_17">退出</div>
+              </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>

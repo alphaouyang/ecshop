@@ -1,0 +1,311 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script language="javascript"> 
+<!--
+/*屏蔽所有的js错误*/
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+</script>
+
+<div id="box_root" class="pageIndex">
+	<div id="box_mainBody" style="overflow-x: hidden; overflow-y: hidden; bottom: 44px; background-image: none; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; background-position: initial initial; background-repeat: initial initial; ">
+		<div id="box_main" style="-webkit-transition-timing-function: initial; -webkit-transition-delay: initial; min-height: 415px; -webkit-transition-property: -webkit-transform; -webkit-transform-origin-x: 0px; -webkit-transform-origin-y: 0px; -webkit-transition-duration: 0ms; -webkit-transform: translate3d(0px, 0px, 0px) scale(1); ">
+
+<header>
+
+
+
+				<!-- 头部 -->
+				<section class="PublicConfig_showLogo01-d1_c1">
+					<a class="logoWrap" href="index.php">&nbsp;</a>
+					
+                    <div class="header_r">
+		  <ul>
+				<li class="sort"><a href="catalog.php">筛选</a></li>
+				<li class="search"><a href="flow.php">购物车</a></li>
+				<li class="login">
+					<a href="user.php">
+							账号
+					</a>
+				</li>
+			</ul>
+		</nav>
+					<div class="clea-both"></div>
+				</section>
+				<div class="columnSpace" id="elem-Columns_navigation01-001" name="栏目导航"> 
+ <script type="text/javascript">
+var myScroll,columnScroll,othercolumnsScroll,listRefresh;
+	$(function(){	
+		//var href =window.location.href;
+		//href=href.substring(href.indexOf("/",7));
+		//console.log(href);
+		var currentColumn = sessionStorage["currentColumn"];	
+		$("#singleScrollUl .active").removeClass('current');
+		if(currentColumn != null){
+			$("#column" + currentColumn).addClass('current');
+		}
+		if(true){		
+			setColumnWidth();
+			columnScroll=new iScroll("singleScroll",{
+					zoom: false,
+					hScrollbar: false,
+					vScrollbar : false,
+					bounce: false,
+					snap:"li",
+					momentum:false,
+					vScroll:false,
+					onScrollEnd:disableArrow
+				});		
+			if(currentColumn != null){
+				var x = parseFloat(sessionStorage["columnx"]);
+				columnScroll.scrollTo(x,0,100);				
+			}
+		}
+		if(false){		
+			setColumnHeight();
+			columnScroll=new iScroll("singleScrollDiv",{
+					zoom: false,
+					hScrollbar: false,
+					vScrollbar : false,
+					bounce: false,					
+					momentum:false,
+				    onBeforeScrollStart: function(e) {
+						var target = e.target;
+						columnScroll.targetElement = target;
+						columnScroll.clickFunc = $(target).attr("onclick");
+						while (target.nodeType != 1) target = target.parentNode;
+						if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA' && target.tagName != 'BUTTON'){
+							if(!$.os.ios){
+								e.preventDefault();
+							}
+						}
+					},
+					onScrollMove :function(event){
+						event.preventDefault();
+						event.stopPropagation();
+						columnScroll.touchMoveFlag = true;
+					},
+					onTouchEnd : function(){
+						if(columnScroll.touchMoveFlag){
+							$(columnScroll.targetElement).removeAttr("onclick");
+							setTimeout(function(){
+								$(columnScroll.targetElement).attr("onclick",columnScroll.clickFunc);
+								columnScroll.targetElement = null;
+								columnScroll.clickFunc = null;
+								columnScroll.startY = null;
+								columnScroll.endY = null;
+								columnScroll.touchMoveFlag = false;
+							},50);
+						}
+					}			
+				});	
+				$("#singleScroll").on("touchmove",function(event){
+					event.preventDefault();
+					event.stopPropagation();
+				});
+				$(".more.active").click(function(){
+					if(columnScroll){
+						setTimeout(function(){
+							columnScroll.refresh();
+						},10);
+					}
+				});
+		}
+		var windowH = $(window).height(),
+			headerH = $("#box_header").height() + ($.os.ios ? (-68) : 0),
+			footerH = $("#box_footerBody").height();		
+		$("#othercolumns").css("height",windowH-headerH-footerH +"px").bind("touchmove",function(event){
+			event.preventDefault();
+			event.stopPropagation();
+		});
+		$(document).tap(function(){
+			$('#othercolumns').hide();
+		});
+		$("#othercolumns").tap(function(e){
+			e.stopPropagation();			
+		});
+		$(".navBarR").tap(function(e){
+			e.stopPropagation();
+			showSelect();
+		});
+		$(window).on("resize",function(){
+			setTimeout(function(){
+				var windowH = $(window).height(),
+					headerH = $("#box_header").height() + ($.os.ios ? (-68) : 0),
+					footerH = $("#box_footerBody").height();		
+				$("#othercolumns").css("height",windowH-headerH-footerH +"px");
+				if(othercolumnsScroll) {
+					othercolumnsScroll.refresh();
+				}		
+				if(columnScroll){
+					setColumnHeight();
+					columnScroll.refresh();
+				}
+				if(listRefresh){
+					listRefresh();
+				}
+				//setHeight();
+				if(myScroll){
+					myScroll.refresh();
+				}				
+			},100);
+		});
+			var wholeWidth = parseFloat($("#singleScroll").width());
+			for(var i = 0,l = $("#singleScroll li").length; i < l; i++){				
+				wholeWidth -= parseFloat($("#singleScroll li").eq(i).width());				
+				if( wholeWidth < 0 ){
+					break;
+				}	
+			}
+			for(var j = l - 1; j >= i ; j--) {
+				$("#singleScroll li").eq(j).prependTo($("#othercolumns ul"));
+			}
+	});
+	function setColumnHeight(){
+		var windowH = $(window).height(),
+			headerH = $(".z3g-headerSmall").height() + ($.os.ios ? (-68) : 0),
+			footerH = $("#box_footerBody").height();		
+		$("#singleScrollDiv").css("max-height",windowH-headerH-footerH +"px");
+	}
+	function disableArrow(){
+		var x=columnScroll.x;
+		var w=ulwidth+x;
+		if(w==280){
+			$('#columnnext').addClass('disTap');
+			$('#columnnext').removeClass('active');			
+		}else{
+			$('#columnnext').removeClass('disTap');
+			$('#columnnext').addClass('active');			
+		}
+		if(w==ulwidth){
+			$('#columnprev').addClass('disTap');
+			$('#columnprev').removeClass('active');			
+		}else{
+			$('#columnprev').removeClass('disTap');
+			$('#columnprev').addClass('active');			
+		}		
+		//console.log(w);
+	}
+	function setColumnWidth(){
+		
+		
+			getTotalWidth('10')
+		
+			getTotalWidth('11')
+		
+			getTotalWidth('12')
+		
+			getTotalWidth('13')
+			getTotalWidth('14')
+		
+		$('#singleScrollUl').css("width",ulwidth);		
+	}
+	var othercolumnsScroll;
+	function showSelect(){
+		if($("#othercolumns").css("display")=="block"){
+			$('#othercolumns').hide();			
+		}else{
+			$('#othercolumns').show();			
+			if(!othercolumnsScroll){
+				othercolumnsScroll = new iScroll("othercolumns",{
+					  zoom: false,
+					  hScroll: false,
+					  hScrollbar: false,
+					  vScrollbar : false,
+					  bounce: false,
+					  onBeforeScrollStart: function(e) {
+						  var target = e.target;
+						  othercolumnsScroll.targetElement = target;
+						  othercolumnsScroll.clickFunc = $(target).attr("onclick");
+						  while (target.nodeType != 1) target = target.parentNode;
+						  if (target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA' && target.tagName != 'BUTTON'){
+							  if(!$.os.ios){
+								  e.preventDefault();
+							  }
+						  }
+					  },
+					  onScrollMove :function(event){
+						  event.preventDefault();
+						  event.stopPropagation();
+						  othercolumnsScroll.touchMoveFlag = true;
+
+					  },
+					  onTouchEnd : function(){
+						  if(othercolumnsScroll.touchMoveFlag){
+							  $(othercolumnsScroll.targetElement).removeAttr("onclick");
+							  setTimeout(function(){
+								  $(othercolumnsScroll.targetElement).attr("onclick",othercolumnsScroll.clickFunc);
+								  othercolumnsScroll.targetElement = null;
+								  othercolumnsScroll.clickFunc = null;
+								  othercolumnsScroll.startY = null;
+								  othercolumnsScroll.endY = null;
+								  othercolumnsScroll.touchMoveFlag = false;
+							  },50);
+						  }
+					  }
+				  });
+			}
+		}	
+	}
+	function spanOnClick(id,url){
+		setCurrentColumn(id);
+		window.location.href=url;
+	}
+	function setCurrentColumn(clickColumn){
+		sessionStorage["currentColumn"]=clickColumn;
+		if(true){		
+			sessionStorage["columnx"]=columnScroll.x;		
+		}		
+	}	
+	var ulwidth=0;
+	function getTotalWidth(id){		
+		var w=$('#column'+id)[0].offsetWidth;
+		ulwidth=ulwidth+w;		
+	}	
+	function goNext(){
+		columnScroll.scrollToPage('next', 0);return false;
+	}
+	function goPrev(){
+		
+		//console.log('prev');	
+		columnScroll.scrollToPage('prev', 0);return false;
+	}
+</script>
+<div id="Columns_navigation01-001" class="Columns_navigation01-d1">
+		
+		
+			<nav class="Columns_navigation01-d1_c2">
+			<div class="navBarL active" id="columnprev" onClick="goPrev();">				
+				<span></span>
+			</div>
+			<div class="navBody" id="singleScroll" style="overflow-x: hidden; overflow-y: hidden; ">
+			  <ul class="sc_scroller" id="singleScrollUl" style="-webkit-transition-timing-function: initial; -webkit-transition-delay: initial; width: 350px; -webkit-transition-property: -webkit-transform; -webkit-transform-origin-x: 0px; -webkit-transform-origin-y: 0px; -webkit-transform: translate3d(0px, 0px, 0px); -webkit-transition-duration: 0ms; ">
+				
+					
+				<li><span class="active" id="column10" onClick="javascript:window.location.href='index.php'">{$lang.home}</span></li>
+                 <!-- {foreach name=cat from=get_categories_tree() item=cat} -->
+                 <!--{if $smarty.foreach.cat.iteration <=4 }-->
+					<li><span class="active" id="column1{$smarty.foreach.cat.iteration}" onClick="javascript:window.location.href='{$cat.url}'">{$cat.name}</span></li>
+                     <!-- {/if} -->
+				<!-- {/foreach} -->
+				
+			</ul>
+			</div>
+			<div class="navBarR active" id="columnnext" onClick="goNext();">
+				<span></span>
+			</div>
+		</nav>
+		
+		
+		
+</div> 
+	</div>
+</header>
+
+
+

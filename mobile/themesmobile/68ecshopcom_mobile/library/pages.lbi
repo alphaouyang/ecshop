@@ -1,0 +1,24 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $pager}
+<div class="comment_page" id="PorductListPage"> 
+{if $pager.page_prev}
+<a href="{$pager.page_prev}"class="prev" ><span>{$lang.page_prev}</span></a> 
+{else}
+<a href="javascript:;" class="prev dis" ><span>{$lang.page_prev}</span></a> 
+{/if}
+<a href="javascript:;" class="page_select" >
+<span class="page_tip">第<!--{foreach from=$pager.page_number key=key item=item}--><!-- {if $pager.page eq $key} -->{$key}<!-- {/if} --><!-- {/foreach} -->/{$pager.page_count}页</span>
+</a> 
+{if $pager.page_next}
+<a  href="{$pager.page_next}"class="next"><span>{$lang.page_next}</span></a>
+{else}
+<a href="javascript:;" class="next dis"><span>{$lang.page_next}</span></a>
+{/if}
+
+  <select class="input_select"  onchange="location.href=this.options[this.selectedIndex].value;">
+<!--{foreach from=$pager.page_number key=key item=item}-->
+  <option <!-- {if $pager.page eq $key} -->selected="selected"{/if} value="{$item}">第{$key}页</option>
+  {/foreach}
+</select>
+</div>
+{/if}

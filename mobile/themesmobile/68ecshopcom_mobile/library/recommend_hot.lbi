@@ -1,0 +1,18 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $hot_goods}
+<div class="list">
+      <div class="head"><span>{$lang.hot_goods}</span></div>
+      <div class="blank6"></div>
+     <p> <ul>  
+          {foreach from=$hot_goods item=goods name=hot_goods}
+           <li class="hproduct">
+                <div class="url">
+                    <a class="photo" href="{$goods.url}"><img src="{$option.static_path}{$goods.thumb}" width="80"></a>
+                    <a class="fn"href="{$goods.url}">{$goods.name|truncate:10}</a><p class="price">本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}          <!--{else}-->{$goods.shop_price}<!--{/if}--></p><del class="old_price">原　价：{$goods.market_price}</del>
+                       <a href="javascript:addToCart({$goods.id})" class="btn">立即购买</a>
+                  </div>             
+                </li>          
+             <!--{/foreach}-->
+     </ul></p>
+</div>
+{/if} 

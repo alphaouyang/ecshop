@@ -1,0 +1,54 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{if $pager}
+{if $pager.styleid eq 0 }
+<section class="list-pagination">
+    <div style="" class="pagenav-wrapper" id="J_PageNavWrap">
+      <div class="pagenav-content">
+        <div class="pagenav" id="J_PageNav">
+          <div class="p-first p-gray"> <a data-atp="1,pageone,,,footer,10,footer,">首页</a> </div>
+          <div class="p-prev p-gray"> <a data-atp="2,pageup,,,footer,10,footer,">上一页</a> </div>
+          <div class="pagenav-cur">
+            <div class="pagenav-text"> <span>1/100</span> <i></i> </div>
+            <select data-atp="3,pagechoose,,,footer,10,footer," class="pagenav-select">
+              <option selected="selected">第1页</option>
+              <option>第2页</option>
+              <option>第3页</option>
+              <option>第4页</option>
+              <option>第5页</option>
+            </select>
+          </div>
+          <div class="p-next"> <a data-atp="4,pagedn,,,footer,10,footer,">下一页</a> </div>
+          <div class="p-end"> <a data-atp="5,pagelast,,,footer,10,footer,">末页</a> </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="text/javascript">
+function selectPage(sel){sel.form.submit();}
+</script>
+{else}
+<section class="list-pagination">
+    <div class="pagenav-wrapper">
+      <div class="pagenav-content">
+        <div class="pagenav" id="J_PageNav">
+         {if $pager.page_first} <div class="p-first p-gray"> <a href="{$pager.page_first}{if $category}#list{/if}">{$lang.page_first}</a> </div>{/if}
+          <div class="p-prev p-gray"> <a {if $pager.page_prev}href="{$pager.page_prev}{if $category}#list{/if}"{/if}>{$lang.page_prev}</a> </div>
+          {if $pager.page_count neq 1}
+<div class="pagenav-cur">
+            <div class="pagenav-text"> <span>{foreach from=$pager.page_number key=key item=item}{if $pager.page eq $key}{$key}{/if} {/foreach}/{$pager.page_count}</span> <i></i> </div>
+            <select class="pagenav-select" onchange="location.href=this.options[this.selectedIndex].value;">
+            {foreach from=$pager.page_number key=key item=item}
+              <option {if $pager.page eq $key}selected="selected"{/if} value="{$item}{if $category}#list{/if}">第{$key}页</option>
+               {/foreach}
+            </select>
+          </div>
+
+	{/if}
+         <div class="p-next"> <a  {if $pager.page_next}href="{$pager.page_next}"{/if}>{$lang.page_next}</a> </div>
+          {if $pager.page_last}<div class="p-end"> <a href="{$pager.page_last}{if $category}#list{/if}">{$lang.page_last}</a> </div>{/if}
+        </div>
+      </div>
+    </div>
+  </section>
+{/if}
+{/if}

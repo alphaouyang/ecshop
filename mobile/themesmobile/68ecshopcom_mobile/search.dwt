@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/fonts/font-awesome.min.css">
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+</head>
+<body style="background: rgb(235, 236, 237);">
+<div id="Cheader" style="">
+  <div id="header" class="header_03">
+     <a href="./" class="arrow">首页</a>
+    <div class="tit" style="">
+      <h3>  <!-- {if $intromode eq 'best'} -->
+       {$lang.best_goods}
+         <!-- {elseif $intromode eq 'new'} -->
+    {$lang.new_goods}
+         <!-- {elseif $intromode eq 'hot'} -->
+        {$lang.hot_goods}
+         <!-- {elseif $intromode eq 'promotion'} -->
+      {$lang.promotion_goods}
+         <!-- {else} -->
+        {$lang.search_result}
+         <!-- {/if} --></h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="wrapper" class="xm_app">
+  <div id="viewport" class="viewport" style="display: block; background: transparent;">
+    <div class="product_sorting">
+      <ul>
+        <li><a id="sortbtn_adapt" class="sort-cur <!-- {if $pager.search.sort == 'last_update'} -->active{/if}" href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=last_update&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"><span>更新</span></a></li>
+        <li><a id="sortbtn_newtime"  class="sort-cur <!-- {if $pager.search.sort == 'goods_id'} -->active<!-- {/if} -->" href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=goods_id&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"><span>最新</span></a></li>
+        <li><a id="sortbtn_price" class="sort-cur <!-- {if $pager.search.sort == 'shop_price'} -->active{/if}" href="search.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=shop_price&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"><span>价格</span></a></li>
+      </ul>
+    </div>
+<div class="product_product" > 
+<!-- #BeginLibraryItem "/library/search_goods_list.lbi" --><!-- #EndLibraryItem -->
+</div>
+</div>
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+
+</div>
+</body>
+
+</html>

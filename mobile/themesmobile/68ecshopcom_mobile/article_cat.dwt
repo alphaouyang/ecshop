@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css">
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/ecsmart.css">
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{insert_scripts files='common.js,utils.js'}
+</head>
+<body class="category_bg">
+<div id="Cheader" style="">
+  <div id="header" class="header_03">
+    <div class="back"> <a href="./" class="arrow">首页</a> </div>
+    <div class="tit" style="">
+      <h3>{$lang.article_list}</h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="ccontainer">
+  <div class="search-box">
+    <form action="{$search_url}" method="post">
+      <div class="search">
+        <div class="search-input">
+          <div class="ui-suggestion-mask">
+            <input type="text" id="input" name="keywords" value="{$search_value}" placeholder="" autocomplete="off">
+          </div>
+        </div>
+        <div class="search-button">
+          <button class="submit">搜索</button>
+        </div>
+      </div>
+      <input type="hidden" name="id" value="{$cat_id}">
+      <input type="hidden" name="cur_url" value="">
+    </form>
+  </div>
+ <script>
+   function setHelpTab(name,cursel,n){
+		for(i=1;i<=n;i++){
+		var menu=document.getElementById(name+i);
+		var con=document.getElementById("user_"+name+"_"+i);
+		menu.className=i==cursel?"brand-nav-a brand-nav-a-on":"brand-nav-a";
+		con.style.display=i==cursel?"block":"none";
+		}
+	} 
+</script>
+  <div id="user_bzzx_1">
+    <div class="brand-con radius">
+      <div class="hot-list">文章列表 </div>
+      {foreach from=$artciles_list item=article}
+      <div class="hot-list"> <a href="{$article.url}" title="{$article.title|escape:html}">{$article.short_title}</a> <span>{$article.author|truncate:10} {$article.add_time}</span> </div>
+      {/foreach}
+      </div>
+  </div>
+</body>
+<script type="text/javascript">
+document.getElementById('cur_url').value = window.location.href;
+</script>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css"/>
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+</head>
+<body style="background: rgb(235, 236, 237); padding-top:57px;">
+<div id="Cheader" style="">
+<header class="nav">
+    <div class="nav__nav-wrap">
+         <div class="nav__nav-item">
+            <a href="index.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_02.png"></i>
+                <span class="nav___nav-tit">{$lang.home}</span>
+            </a>
+        </div>
+         <div class="nav__nav-item">
+            <a href="catalog.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_04.png"></i>
+                <span class="nav___nav-tit">{$lang.category}</span>
+            </a>
+        </div>
+        <div class="nav__nav-item">
+            <a href="flow.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_08.png"></i>
+                <span class="nav___nav-tit" >{$lang.cart}</span>
+                <span class="nav__nav-shop-cart-num" id="ECS_CARTINFO"> 0 </span>
+            </a>
+        </div>
+        <div class="nav__nav-item">
+            <a href="user.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_10.png"></i>
+                <span class="nav___nav-tit" >{$lang.user_center}</span>
+            </a>
+        </div>
+    </div>
+</header>
+<div id="wrapper" class="xm_app">
+  <div id="viewport" class="viewport" style="display: block; background: transparent;">
+    <div class="product_sorting">
+      <ul>
+        <li><a id="sortbtn_adapt" class="sort-cur {if $pager.search.sort == 'last_update'}active{/if}" href="exchange.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=last_update&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"><span class="<!-- {if $pager.search.sort == 'last_update' &&  $pager.search.order eq 'DESC'} -->ASC<!-- {elseif $pager.search.sort == 'last_update' &&  $pager.search.order == 'ASC'} -->DESC<!-- {else} --><!-- {/if} -->">更新</span></a></li>
+        <li><a id="sortbtn_newtime"  class="sort-cur <!-- {if $pager.search.sort == 'goods_id'} -->active<!-- {/if} -->" href="exchange.php?{foreach from=$pager.search key=key item=item}{if $key neq "sort" and $key neq "order"}{$key}={$item}&{/if}{/foreach}page={$pager.page}&sort=goods_id&order={if $pager.search.order eq 'DESC'}ASC{else}DESC{/if}#list"><span class="<!-- {if $pager.search.sort == 'goods_id' && $pager.search.order eq 'DESC'} -->ASC<!-- {elseif  $pager.search.sort == 'goods_id' &&  $pager.search.order == 'ASC'} -->DESC<!-- {else} --><!-- {/if} -->">最新</span></a></li>
+        <li><a id="sortbtn_price" class="sort-cur {if $pager.search.sort == 'exchange_integral'}active{/if}" href="exchange.php?display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=exchange_integral&order=<!-- {if $pager.sort == 'exchange_integral' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span class="<!-- {if $pager.search.sort == 'exchange_integral' && $pager.search.order eq 'DESC'} -->ASC<!-- {elseif $pager.search.sort == 'exchange_integral' &&  $pager.search.order == 'ASC'} -->DESC<!-- {else} --><!-- {/if} -->">积分</span></a></li>
+      </ul>
+    </div>
+<div class="product_product" > 
+<!-- #BeginLibraryItem "/library/exchange_list.lbi" --><!-- #EndLibraryItem -->
+</div>
+</div>
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+
+    <link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/category.css">
+    <link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />	
+	<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/6025851.min.js"></script>          
+	</head>
+<body style="background: rgb(235, 236, 237);">
+<div id="Cheader" style="">
+  <div id="header" class="header_03">
+    <div class="back"> <a href="./" class="arrow">首页</a> </div>
+    <div class="tit" style="">
+      <h3>分享给朋友</h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+  </div>
+</div> 
+<div class="ccontainer">
+<div class="clist" style="margin:10px;
+	background:#FFF; border-radius:5px;">
+<script type="text/javascript">
+//<![CDATA[
+	var url=location.hostname;
+	var summary="";
+	var shareTitle="{$page_title}";
+	var pic="";
+
+	$(function(){
+	//中文网站
+	 	$("#qzone").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=qzone&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#sina").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=tsina&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#tengXun").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=tqq&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#wangyi").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=t163&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#pengyou").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=xiaoyou&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+		});
+		$("#renren").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=renren&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		
+		$("#weixin").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=weixin&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#douban").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=douban&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		
+			$("#kaixin001").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=kaixin001&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#tieba").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=tieba&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		
+		$("#tsohu").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=tsohu&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#taobao").click(function(){
+			location.href="http://www.jiathis.com/send/?webid=taobao&url="+url+"&title="+shareTitle+"&uid=69830b72-0d99-41aa-a3fd-48634b616ffe";
+			
+		});
+		$("#detail_more").tap(function(){
+            if(document.getElementById('box_header').style.display != "block"){
+                document.getElementById('box_header').style.display = "block";
+				columnScroll.refresh();
+				setColumnWidth();
+           	 }else{
+                document.getElementById('box_header').style.display = "none";
+            }
+			});
+		
+		
+	});
+		function returnPage(){
+			history.back(1);
+		}
+// ]]>
+
+</script>
+<div class="shareWrap" style="min-height:300px">
+						
+						<ul>
+						
+							<li class="active spaceQQ" id="qzone"><span class="icon"></span><span class="text">QQ空间</span></li>
+							<li class="active weiboSina" id="sina"><span class="icon"></span><span class="text">新浪微博</span></li>
+							<li class="active weiboQQ" id="tengXun"><span class="icon"></span><span class="text">腾讯微博</span></li>
+							<li class="active weiboWangyi" id="wangyi"><span class="icon"></span><span class="text">网易微博</span></li>
+							<li class="active friend" id="pengyou"><span class="icon"></span><span class="text">朋友网</span></li>
+							<li class="active renren" id="renren"><span class="icon"></span><span class="text">人人网</span></li>
+							<li class="active weixin" id="weixin"><span class="icon"></span><span class="text">微信</span></li>
+							<li class="active douban" id="douban"><span class="icon"></span><span class="text">豆瓣</span></li>
+							<li class="active kaixin001" id="kaixin001"><span class="icon"></span><span class="text">开心网</span></li>
+							<li class="active baidu" id="tieba"><span class="icon"></span><span class="text">百度贴吧</span></li>
+					<li class="active weiboSohu" id="tsohu"><span class="icon"></span><span class="text">搜虎微博</span></li>
+							<li class="active taojianghu" id="taobao"><span class="icon"></span><span class="text">淘江湖</span></li>
+						</ul>
+					</div>
+</div>
+</div>
+
+</body>
+
+</html>

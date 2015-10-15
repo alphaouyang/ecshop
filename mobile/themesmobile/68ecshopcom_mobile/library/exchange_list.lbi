@@ -1,0 +1,23 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="list_product list_column list_tmp">
+  <ul id="ProductList">
+	{foreach from=$goods_list item=goods name=goods_list}
+    {if $goods.goods_id}
+    <li>
+      <div class="product items "> <a href="{$goods.url}" class="ScanProductViewBtn" >
+        <div class="imgurl"><img src="{$goods.goods_thumb}"></div>
+        <div class="info">
+          <dl>
+            <dt>
+              <span> {$goods.goods_name} </span>
+            </dt>
+            <dd><span class="pull-left"><strong>消耗积分:<b class="ect-colory">{$goods.exchange_integral}</b></strong></span><span class="ect-pro-price"></span></dd>
+      </dl>
+        </div>
+        </a> </div>
+    </li>
+    {/if} 
+    <!--{/foreach}-->
+    
+  </ul>
+</div>

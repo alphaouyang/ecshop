@@ -1,0 +1,26 @@
+<div class="order_view mlr20 mb40 has_bottom_panel">
+  <div class="envelope_paper">
+<div id="tbh5v0">
+<div id="user_wdpj_2" class="goods_list" style="margin-top:0; ">
+  {if $comment_list}
+		{foreach from=$comment_list item=message key=key name=message_list}
+            <dl class="order_list">
+            <dt>{$message.cmt_name} <font>{$message.formated_add_time}</font></dt>
+            
+            <dd style="color:#999">{$message.content|escape}</dd>
+           
+      
+           {if $message.reply_content}
+					<dd><span class="price">管理员回复：</span><span style="color:#F60">{$message.reply_content}</span></dd>
+			{/if}
+            <dd><a href="user.php?act=del_cmt&amp;id={$message.comment_id}" title="{$lang.drop}" onclick="if (!confirm('{$lang.confirm_remove_msg}')) return false;">{$lang.drop}</a></dd>
+            <div class="blank5"></div>
+         </dl>
+          {/foreach}
+		{include file='library/pages.lbi'}
+		{else}
+            <div id="list_0_0" class="alertText1 font12">{$lang.no_comments}</div>
+            {/if}
+</div>
+</div>
+</div></div>

@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/TouchSlide.1.1.js"></script>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/68ecshop.css"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/fonts/font-awesome.min.css">
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js}
+</head>
+<body>
+<div id="wrapper" >
+  <div class="page-index" id="home">
+    <header class='header'>
+    <a href="catalog.php" class="top_bt">首页</a>
+    <div class="tit" style="">
+      <h3>{$lang.shop_name}</h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+</header>
+   <!-- #BeginLibraryItem "/library/index_ad.lbi" --><!-- #EndLibraryItem --> 
+    <div id="fake-search" >
+      <div class="fakeInput">
+       <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()" class="searchform">      
+          <input  name="keywords" id="keyword" class="search_text" value="请输入搜索的商品" onFocus="if(this.value=='请输入搜索的商品'){this.value=''}" onBlur="if(this.value==''){this.value='请输入搜索的商品'}" type="text"/>
+          <input type="submit"  class="search_submit" value=""/>
+		</form>
+        </div>
+
+</div>
+     <!-- #BeginLibraryItem "/library/index_icon.lbi" --><!-- #EndLibraryItem --> 
+    
+    
+    
+    <div class="card show_big">
+      <div class="col2">
+        <div class="row2 mg-bor-right"><span><!-- TemplateBeginEditable name="手机端首页左侧广告1" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></span></div>
+        <div class="rows">
+          <div class="row1"><span><!-- TemplateBeginEditable name="手机端首页右侧广告1" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></span></div>
+          <div class="row1 mg-bor-no-left mg-bor-top"><span><!-- TemplateBeginEditable name="手机端首页右侧广告2" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></span></div>
+        </div>
+      </div>
+      
+      <div>
+        <div class="col2">
+          <div class="row1 mg-bor-right"><span><!-- TemplateBeginEditable name="手机端首页左侧广告2" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></span></div>
+          <div class="row1 mg-bor-right"><span><!-- TemplateBeginEditable name="手机端首页右侧广告3" -->
+<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
+{insert name=ads id=$ads_id num=$ads_num}
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable --></span></div>
+</div>
+</div>
+</div>
+<!--精品-->
+<!-- TemplateBeginEditable name="首页促销广告" -->
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="手机端首页推荐模块" -->
+<!-- #BeginLibraryItem "/library/recommend_hot.lbi" -->
+
+{if $hot_goods}
+<div class="list">
+      <div class="head"><span>{$lang.hot_goods}</span></div>
+      <div class="blank6"></div>
+     <p> <ul>  
+          {foreach from=$hot_goods item=goods name=hot_goods}
+           <li class="hproduct">
+                <div class="url">
+                    <a class="photo" href="{$goods.url}"><img src="{$option.static_path}{$goods.thumb}" width="80"></a>
+                    <a class="fn"href="{$goods.url}">{$goods.name|truncate:10}</a><p class="price">本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}          <!--{else}-->{$goods.shop_price}<!--{/if}--></p><del class="old_price">原　价：{$goods.market_price}</del>
+                       <a href="javascript:addToCart({$goods.id})" class="btn">立即购买</a>
+                  </div>             
+                </li>          
+             <!--{/foreach}-->
+     </ul></p>
+</div>
+{/if} 
+
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_new.lbi" -->
+
+{if $new_goods}
+<div class="list">
+      <div class="head"><span>{$lang.new_goods}</span></div>
+      <div class="blank6"></div>
+      <ul>  
+         {foreach from=$new_goods item=goods name=new_goods}
+           <li class="hproduct">
+                <div class="url">
+                    <a class="photo" href="{$goods.url}"><img src="{$option.static_path}{$goods.thumb}" width="80"></a>
+                   <a class="fn"href="{$goods.url}">{$goods.name|truncate:10}</a><p class="price">本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}          <!--{else}-->{$goods.shop_price}<!--{/if}--></p><del class="old_price">原　价：{$goods.market_price}</del>
+                    <a href="javascript:addToCart({$goods.id})" class="btn">立即购买</a>
+                  </div>             
+                </li>          
+             <!--{/foreach}-->
+     </ul>
+    </div>
+{/if} 
+ <!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/recommend_promotion.lbi" -->
+
+{if $promotion_goods}
+<div class="list">
+      <div class="head"><span>{$lang.promotion_goods}</span></div>
+      <div class="blank6"></div>
+       <ul>  
+          {foreach from=$promotion_goods item=goods name=promotion_goods}
+           <li class="hproduct">
+                <div class="url">
+                    <a class="photo" href="{$goods.url}"><img src="{$option.static_path}{$goods.thumb}" width="80"></a>
+                    <a class="fn"href="{$goods.url}">{$goods.name|truncate:10}</a><p class="price">本店价：<!--{if $goods.promote_price neq "" } -->{$goods.promote_price}          <!--{else}-->{$goods.shop_price}<!--{/if}--></p><del class="old_price">原　价：{$goods.market_price}</del>
+                    <a href="javascript:addToCart({$goods.id})" class="btn">立即购买</a>
+                  </div>             
+                </li>          
+             <!--{/foreach}-->
+     	</ul>
+</div>
+{/if} 
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="手机端首页分类下的商品" -->
+<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
+
+<div class="list">
+  <div class="head"><span>{$goods_cat.name|escape:html}</span></div>
+  <div class="blank6"></div>
+  <div class="list-cell"> 
+    <!--{foreach from=$cat_goods item=goods name=catgoods}--> 
+      <div class="cell"> <div class="product items "> <a href="{$goods.url}" class="ScanProductViewBtn" >
+        <div class="imgurl"><img src="{$option.static_path}{$goods.thumb}"></div>
+        <div class="info">
+          <dl>
+            <dt>
+              <span>{$goods.short_name|escape:html}</span>
+            </dt>
+            <dd><span class="pull-left"><span>价格:<b class="ect-colory"><!--{if $goods.promote_price neq "" } --> {$goods.promote_price}<!--{else}--> 
+            {$goods.shop_price}<!--{/if}--></b></span><small class="ect-margin-lr" style="display:none"><del>{$goods.market_price}</del></small></span><span class="ect-pro-price"></span></dd>
+            <dd><span class="pull-left"><i class="fa fa-eye"></i>{$goods.click_count}人浏览</span></dd>
+      </dl>
+        </div>
+        </a> </div></div>
+    {/foreach} </div>
+</div>
+<div class="col1 more"><a href="{$goods_cat.url}"><span>查看更多{$goods_cat.name|escape:html}&nbsp;&gt;</span></a></div>
+
+ <!-- #EndLibraryItem -->
+<!-- TemplateEndEditable -->
+
+
+  </div>
+</div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+ <!-- #EndLibraryItem -->
+ 
+<script type="text/javascript">
+window.onload = function()
+{
+  //Compare.init();
+  //fixpng();
+}
+{foreach from=$lang.compare_js item=item key=key}
+{if $key neq 'button_compare'}
+var {$key} = "{$item}";
+{else}
+var button_compare = '';
+{/if}
+{/foreach}
+var compare_no_goods = "{$lang.compare_no_goods}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/fonts/font-awesome.min.css">
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<script type="text/javascript"> 
+$(function () { 
+//绑定事件处
+var showheight = $("#showname").height();
+$("#sortbtn_adapt").click(function () { 
+
+if (!$("#showname").hasClass("adapt_panel_on")) { 
+//设置弹出层位置在点击的下面 
+$("#adapt_panel").show(); 
+$("#showname").height($("#adapt_panel").height());
+
+$("#showname").addClass("adapt_panel_on");
+$("#sortbtn_adapt").addClass("active on");
+} 
+else { 
+$("#adapt_panel").hide(); 
+$("#showname").removeClass("adapt_panel_on");
+$("#sortbtn_adapt").removeClass("active on");
+$("#showname").height(showheight);
+} 
+}); 
+
+$("#quxiaoanniu").click(function () { 
+$("#adapt_panel").hide(); 
+$("#showname").height(showheight);
+$("#showname").removeClass("adapt_panel_on");
+$("#sortbtn_adapt").removeClass("active on");
+}
+)
+}); 
+</script>
+</head>
+<body style="background:#EEF0F3; padding-top:57px;">
+<header class="nav">
+    <div class="nav__nav-wrap">
+        <div class="nav__nav-item">
+            <a href="index.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_02.png"></i>
+                <span class="nav___nav-tit">{$lang.home}</span>
+            </a>
+        </div>
+         <div class="nav__nav-item">
+            <a href="catalog.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_04.png"></i>
+                <span class="nav___nav-tit">{$lang.category}</span>
+            </a>
+        </div>
+        <div class="nav__nav-item">
+            <a href="flow.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_08.png"></i>
+                <span class="nav___nav-tit" >{$lang.cart}</span>
+                <span class="nav__nav-shop-cart-num" id="ECS_CARTINFO"> 0 </span>
+            </a>
+        </div>
+        <div class="nav__nav-item">
+            <a href="user.php" class="nav__nav-link">
+                <i class="nav__iconfont"><img src="themesmobile/68ecshopcom_mobile/img/cutp_10.png"></i>
+                <span class="nav___nav-tit" >{$lang.user_center}</span>
+            </a>
+        </div>
+    </div>
+</header>
+<div id="wrapper" class="xm_app">
+  <div id="viewport" class="viewport" style="display: block; background: transparent;">
+    <div class="product_sorting">
+      <ul>
+        <li><a id="sortbtn_adapt" class="ico-down" href="javascript:;"><span>筛选</span></a></li>
+        <li><a id="sortbtn_newtime"  class="sort-cur <!-- {if $pager.sort == 'goods_id'} -->active<!-- {/if} -->" href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span class="<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {elseif $pager.sort == 'goods_id' && $pager.order == 'ASC'} -->DESC<!-- {else} --><!-- {/if} -->">上架</span></a></li>
+        <li><a id="sortbtn_price" class="sort-cur <!-- {if $pager.sort == 'shop_price'} -->active<!-- {/if} -->" href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span  class="<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {elseif $pager.sort == 'shop_price' && $pager.order == 'DESC'} -->ASC<!--{else} --><!-- {/if} -->">价格</span></a></li>
+        <li style="border-right:none"><a id="sortbtn_update" class="sort-cur <!-- {if $pager.sort == 'last_update'} -->active<!-- {/if} -->" href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span  class="<!-- {if $pager.sort == 'last_update' && $pager.order == 'ASC'} -->DESC<!-- {elseif $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!--{else} --><!-- {/if} -->">更新</span></a></li>
+</ul>
+</div>
+<div class="product_product " id="showname"> 
+<!-- #BeginLibraryItem "/library/goods_list.lbi" --> <!-- #EndLibraryItem -->
+<div id="adapt_panel" class="overlay_adapt_panel" >
+<div id="pick_panel" class="pick_panel" >
+<script type="text/javascript">
+function get_brand(brand_id)
+{
+	document.getElementById('brand').value = brand_id;
+	var obj = document.getElementById('brands').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('brand_'+brand_id).className = 'cur';
+}
+
+function get_price(price_min,price_max)
+{
+	document.getElementById('price_min').value = price_min;
+	document.getElementById('price_max').value = price_max;
+	var obj = document.getElementById('prices').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('price_'+price_min).className = 'cur';
+}
+
+<!--{foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}-->
+
+function get_attr_{$smarty.foreach.filter_attr_list.iteration}(attr_id)
+{
+	document.getElementById('show68ecshop_{$smarty.foreach.filter_attr_list.iteration}').value=attr_id;
+	var show68ecshop = document.getElementsByName("show68ecshop");
+	var zongshu = null;
+	for(var i=show68ecshop.length;i>0;i--){
+	if(zongshu == null)
+	{
+		zongshu = document.getElementById("show68ecshop_"+i).value;
+	
+	}
+	else
+	{
+		zongshu = document.getElementById("show68ecshop_"+i).value +"."+zongshu;
+		document.getElementById('filter_attr').value = zongshu;	
+	}
+	}
+
+	var obj = document.getElementById('attrs_{$smarty.foreach.filter_attr_list.iteration}').getElementsByTagName('a');
+
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('attr_{$smarty.foreach.filter_attr_list.iteration}_'+attr_id).className = 'cur';
+
+}
+
+<!--{/foreach}-->
+
+
+</script>
+<form method="post" action="category.php">
+
+  <div class="cate-list cate-list-pop" id="Cate_Choose" >
+    <input type="hidden" name="brand" id="brand" value="{$brand}"><input type="hidden" name="price_min" id="price_min" value="{$price_min}"><input type="hidden" name="price_max" id="price_max" value="{$price_max}"><input type="hidden" name="filter_attr" id="filter_attr" value="{$filter_attr_str}"><input type="hidden" name="id" value="{$cat_id}">
+     {if $brands.1}
+    <p class="f16 a1 ti10 mt10">{$lang.brand}</p>
+    <div class="type1 type fix" id="brands">
+    {foreach from=$brands item=brand name=brands}<a href="javascript:get_brand('{$brand.brand_id}')" class="{if $brand.selected}cur{/if}" id="brand_{$brand.brand_id}">{$brand.brand_name}<em></em></a>{/foreach}   
+   </div>
+    {/if}
+ {if $price_grade.1}
+    <p class="f16 a1 ti10 mt10">{$lang.price}</p>
+    <div class="type1 type fix" id="prices">
+    {foreach from=$price_grade item=grade name=price_grade}<a href="javascript:get_price('{$grade.formated_start1}','{$grade.formated_end1}')" class="{if $grade.selected}cur{/if}" id="price_{$grade.formated_start1}">{if $smarty.foreach.price_grade.first}{$grade.price_range}{else}{$grade.formated_start} - {$grade.formated_end}{/if}<em></em></a>{/foreach}   
+   </div>
+    {/if}
+  {foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}
+    <p class="f16 a1 ti10 mt10">{$filter_attr.filter_attr_name|escape:html}{$lang.colon}</p>
+		<div class="type1 type fix" id="attrs_{$smarty.foreach.filter_attr_list.iteration}">
+		{foreach from=$filter_attr.attr_list item=attr name=filter_attr}<a href="javascript:get_attr_{$smarty.foreach.filter_attr_list.iteration}('{if $attr.attr_id}{$attr.attr_id}{else}0{/if}')" class="{if $attr.selected}cur{/if}" id="attr_{$smarty.foreach.filter_attr_list.iteration}_{if $attr.attr_id}{$attr.attr_id}{else}0{/if}">{$attr.attr_value}<em></em></a>{if $attr.selected}
+<input type="hidden" id="show68ecshop_{$smarty.foreach.filter_attr_list.iteration}" name="show68ecshop" value="{$attr.attr_id}"/>
+{/if}{/foreach}
+		</div>
+	{/foreach}
+    <div class="btn-box" style="margin-bottom:1em;">
+    <input class="btn btn-sn-d" id="quxiaoanniu" value="取消">
+
+      <input class="btn btn-sn-b" type="submit" value="确定">
+    </div>
+  </div>
+
+</form>
+</div>
+</div>
+
+     <!-- #BeginLibraryItem "/library/pages.lbi" --> <!-- #EndLibraryItem --> </div>
+  </div>
+  
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --> <!-- #EndLibraryItem -->
+</body>
+</html>

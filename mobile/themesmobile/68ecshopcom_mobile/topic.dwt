@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/css/group_info.css">
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css">
+<script type="text/javascript" src="themesmobile/68ecshopcom_mobile/js/jquery.js"></script>
+{insert_scripts files='jquery.json.js,transport.js'}
+{insert_scripts files='common.js'}
+<style>
+body{
+	background:{$base_style};
+	margin:0 auto;
+}
+.topicwidth{ width:100%;margin:0 auto 40px;}
+ h3.mod1tit{width:100%;height:54px;line-height:54px; text-align:center;margin:0px auto;color:#ffffff;font-size:16px;font-weight:600;border:none;vertical-align:middle;background:url(themesmobile/68ecshopcom_mobile/img/topicbg3.png) no-repeat 50% 50%}
+.srp.album .proTitle1{position: relative;
+white-space: nowrap;
+text-overflow: ellipsis;
+padding: 0px 10px;
+height: 40px;
+line-height: 40px;
+background: none repeat scroll 0% 0% #FAFAFA;}
+.srp.album .proTitle1 a{ color:#555}
+.proPrice1 {
+    position: relative;
+    text-align:center;
+	color:#555;
+}
+.proPrice1 em{
+color: #F52648;
+font-size: 20px;}
+.topic_pic{ margin:0 auto; text-align:center;}
+.topic_pic img{ margin:0 auto}
+</style>
+</head>
+<body>
+  <div id="header" class="header_03">
+    <a href="./" class="arrow">首页</a>
+    <div class="tit" style="">
+      <h3>{$topic.title}</h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+  </div>
+  <div class="topic_pic">
+  {if $topic.htmls eq ''}
+  <script language="javascript">
+	var topic_width  = "100%";
+	var topic_height = "";
+	var img_url      ="../../{$topic.topic_img}";
+	if (img_url.indexOf('.swf') != -1)
+	{
+		document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ topic_width +'" height="'+ topic_height +'">');
+		document.write('<param name="movie" value="'+ img_url +'"><param name="quality" value="high">');
+		document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+		document.write('<embed src="'+ img_url +'" wmode="opaque" menu="false" quality="high" width="'+ topic_width +'" height="'+ topic_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" wmode="transparent"/>');
+		document.write('</object>');
+	}
+	else
+	{
+		document.write('<img width="' + topic_width + '" height="' + topic_height + '" border="0" src="' + img_url + '">');
+	}
+  </script>
+{else}
+	{$topic.htmls}
+{/if}
+</div>
+{if $topic.intro neq ''}
+ {$topic.intro}
+ <br /><br />
+{/if}
+   	<!-- {if $topic.title_pic eq ''} -->
+    
+     <!-- {foreach from=$sort_goods_arr item=sort key=sort_name} -->
+    <h3 class="mod1tit"><span style="text-shadow: 2px 4px 8px #888;">{$sort_name}</span></h3> 
+    <div class="srp m-animation album" style=" background:none">
+      <!-- {foreach from=$sort item=goods} -->
+        <div class="product single_item info"> 
+            <div class="pro-inner" style="border-radius:0px;">
+                <div class="proImg-wrap"> <a href="{$goods.url}"> <img src="{$goods.goods_thumb}" alt="{$goods.name|escape:html}"/> </a> </div>
+                <div class="proInfo-wrap">
+                    <div class="proTitle1"> <a href="{$goods.url}">{$goods.short_style_name}</a> </div>
+                    <div class="proSKU"> </div>
+                    <div class="proPrice1">本店价：<em>{if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</em> </div>
+                </div>
+            </div>
+        </div>
+         <!--{/foreach}-->
+    </div>
+    <!--{/foreach}-->
+    <!-- {else} -->
+		
+		
+		 <!-- {foreach from=$sort_goods_arr item=sort key=sort_name} -->
+    <div class="clearfix">
+    <h6>{$sort_name}</h6>
+		<div class="sort_box">
+    <!-- {foreach from=$sort item=goods} -->
+     <div class="pro-inner">
+      <div class="proImg-wrap"> <a href="{$goods.url}"> <img src="{$goods.goods_thumb}" alt="{$goods.name|escape:html}"/> </a> </div>
+      <div class="proInfo-wrap">
+	<div class="proTitle1"> <a href="{$goods.url}">{$goods.short_style_name}</a> </div>
+	<div class="proSKU"> </div>
+	<div class="proPrice1">本店价格： <em>{if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</em> </div>
+      </div>
+    </div>
+
+    <!--{/foreach}-->
+		</div>
+    </div>
+
+    <!--{/foreach}-->
+
+  
+    <!-- {/if} -->    
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

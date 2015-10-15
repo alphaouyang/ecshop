@@ -1,0 +1,22 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="list">
+  <div class="head"><span>{$goods_cat.name|escape:html}</span></div>
+  <div class="blank6"></div>
+  <div class="list-cell"> 
+    <!--{foreach from=$cat_goods item=goods name=catgoods}--> 
+      <div class="cell"> <div class="product items "> <a href="{$goods.url}" class="ScanProductViewBtn" >
+        <div class="imgurl"><img src="{$option.static_path}{$goods.thumb}"></div>
+        <div class="info">
+          <dl>
+            <dt>
+              <span>{$goods.short_name|escape:html}</span>
+            </dt>
+            <dd><span class="pull-left"><span>价格:<b class="ect-colory"><!--{if $goods.promote_price neq "" } --> {$goods.promote_price}<!--{else}--> 
+            {$goods.shop_price}<!--{/if}--></b></span><small class="ect-margin-lr" style="display:none"><del>{$goods.market_price}</del></small></span><span class="ect-pro-price"></span></dd>
+            <dd><span class="pull-left"><i class="fa fa-eye"></i>{$goods.click_count}人浏览</span></dd>
+      </dl>
+        </div>
+        </a> </div></div>
+    {/foreach} </div>
+</div>
+<div class="col1 more"><a href="{$goods_cat.url}"><span>查看更多{$goods_cat.name|escape:html}&nbsp;&gt;</span></a></div>

@@ -1,0 +1,3 @@
+<li><a href="user.php?act=account_log"><p>余额</p><p class="red">{$user_info.user_money}</p></a></li>
+<li><a href="user.php?act=bonus"><p>红包</p><p class="red">{$user_info.user_bonus}</p></a></li>
+<li class="bor_r_n"><a href="javascript:void(0)"><p>积分</p><p class="red">{$user_info.user_points}</p></a></li>

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{$page_title}</title>
+<link rel="stylesheet" type="text/css" href="themesmobile/68ecshopcom_mobile/css/category.css"/>
+<link rel="stylesheet" href="themesmobile/68ecshopcom_mobile/fonts/font-awesome.min.css">
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />	
+{insert_scripts files='common.js'}       
+</head>
+<body style="background: rgb(235, 236, 237);">
+<div id="Cheader" style="">
+  <div id="header" class="header_03">
+    <div class="back"> <a href="./" class="arrow">首页</a> </div>
+    <div class="tit" style="">
+      <h3>{$brand.brand_name}</h3>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="cart"> <a href="flow.php">购物车</a> <span id="ECS_CARTINFO" class="ECS_CARTINFO">{insert name='cart_info'}</span> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="wrapper" class="xm_app">
+  <div id="viewport" class="viewport" style="display: block; background: transparent;">
+    <div class="product_sorting">
+      <ul>
+        <li><a id="sortbtn_newtime" class="sort-cur <!-- {if $pager.sort == 'goods_id'} -->active<!-- {/if} -->" href="{$script_name}.php?category={$category}&display={$pager.display}&id={$brand_id}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=goods_id&order=<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span class="<!-- {if $pager.sort == 'goods_id' && $pager.order == 'DESC'} -->ASC<!-- {elseif $pager.sort == 'goods_id' && $pager.order == 'ASC'} -->DESC<!-- {else} --><!-- {/if} -->">上架</span></a></li>
+        <li><a id="sortbtn_newtime" class="sort-cur  <!-- {if $pager.sort == 'last_update'} -->active<!-- {/if} -->" href="{$script_name}.php?category={$category}&display={$pager.display}&id={$brand_id}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=last_update&order=<!-- {if $pager.sort == 'last_update' && $pager.order == 'DESC'} -->ASC<!-- {else} -->DESC<!-- {/if} -->#goods_list"><span>更新</span></a></li>
+        <li><a id="sortbtn_price" class="sort-cur <!-- {if $pager.sort == 'shop_price'} -->active<!-- {/if} -->" href="{$script_name}.php?category={$category}&display={$pager.display}&brand={$brand_id}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&page={$pager.page}&sort=shop_price&order=<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {else} -->ASC<!-- {/if} -->#goods_list"><span  class="<!-- {if $pager.sort == 'shop_price' && $pager.order == 'ASC'} -->DESC<!-- {elseif $pager.sort == 'shop_price' && $pager.order == 'DESC'} -->ASC<!--{else} --><!-- {/if} -->">价格</span></a></li>
+      </ul>
+    </div>
+    <div class="product_product"> 
+	<!-- #BeginLibraryItem "/library/goods_list.lbi" --> <!-- #EndLibraryItem -->
+  <div id="adapt_panel" class="overlay_adapt_panel visible" >
+  <div id="pick_panel" class="pick_panel">
+   
+<script type="text/javascript">
+function get_brand(brand_id)
+{
+	document.getElementById('brand').value = brand_id;
+	var obj = document.getElementById('brands').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('brand_'+brand_id).className = 'cur';
+}
+
+function get_price(price_min,price_max)
+{
+	document.getElementById('price_min').value = price_min;
+	document.getElementById('price_max').value = price_max;
+	var obj = document.getElementById('prices').getElementsByTagName('a');
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('price_'+price_min).className = 'cur';
+}
+
+<!--{foreach from=$filter_attr_list item=filter_attr name=filter_attr_list}-->
+
+function get_attr_{$smarty.foreach.filter_attr_list.iteration}(attr_id)
+{
+	document.getElementById('show68ecshop_{$smarty.foreach.filter_attr_list.iteration}').value=attr_id;
+	var show68ecshop = document.getElementsByName("show68ecshop");
+	var zongshu = null;
+	for(var i=show68ecshop.length;i>0;i--){
+	if(zongshu == null)
+	{
+		zongshu = document.getElementById("show68ecshop_"+i).value;
+	
+	}
+	else
+	{
+		zongshu = document.getElementById("show68ecshop_"+i).value +"."+zongshu;
+		document.getElementById('filter_attr').value = zongshu;	
+	}
+	}
+
+	var obj = document.getElementById('attrs_{$smarty.foreach.filter_attr_list.iteration}').getElementsByTagName('a');
+
+	for(var i=0;i<obj.length;i++)
+	{
+		obj[i].className = '';
+	}
+	document.getElementById('attr_{$smarty.foreach.filter_attr_list.iteration}_'+attr_id).className = 'cur';
+
+}
+
+<!--{/foreach}-->
+
+
+</script>
+
+
+  </div>
+</div>
+     <!-- #BeginLibraryItem "/library/pages.lbi" --> <!-- #EndLibraryItem --> </div>
+  </div>
+  
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --> <!-- #EndLibraryItem -->
+</body>
+
+</html>

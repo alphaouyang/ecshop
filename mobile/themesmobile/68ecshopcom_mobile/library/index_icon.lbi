@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="nav-index card">
+      <ul>
+      {foreach from=$menu_list item=list name=name}
+        <li>
+        <a href="{$list.menu_url}"><span class="icon" style="background:url({$list.menu_img});background-size: 4em 4em;">&nbsp;</span><span class="t"><span>{$list.menu_name}</span></span></a>
+        </li>	
+          <!--{if $smarty.foreach.name.iteration%4 eq 0 && $smarty.foreach.best_goods.iteration neq $smarty.foreach.name.total}--></ul><ul><!--{/if}-->
+<!--{/foreach}-->
+</div>

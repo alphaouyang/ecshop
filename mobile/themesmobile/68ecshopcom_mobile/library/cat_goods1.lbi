@@ -1,0 +1,45 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <?php
+ $cat_id = 1;//修改数字1为想要调用的分类ID
+ $this->assign('cat_info', get_wap_cat_info($cat_id));
+ $this->assign('thiscid1', get_wap_parent_id_tree($cat_id));
+ $this->assign('cat_goods2', get_cat_id_goods_list($cat_id,6));   
+?>
+<section class="index_floor">
+<div class="floor_body ">
+<h2>
+<span class="title_l"></span><span class="title_r"></span><a href="{$cat_info.url}" class="more"></a>
+{$cat_info.name}
+</h2>
+
+<ul class="clearfix">
+	{foreach from=$cat_goods2 item=goods name=cat_goods}
+                   
+                    <li style="visibility: visible;">
+                        <a href="{$goods.url}" title="{$goods.name|escape:html}">
+                         <div class="products_kuang">
+                        <img src="../../{$goods.thumb}">
+                   
+                         </div>
+                       <div class="goods_name">
+                     {$goods.short_name}
+                        </div>
+                         <span class="price">{if $goods.promote_price}{$goods.promote_price}{else}{$goods.shop_price}{/if}</span> 
+                        </a>
+                        
+                    </li>
+               
+                    {/foreach}
+                    
+<li></li>
+<li></li>
+</ul>
+<div class="floor_key clearfix">
+<!--{foreach from=$thiscid1 item=list name=name}-->
+<A href="{$list.url}">{$list.name}</A>
+<!--{/foreach}-->
+</div>
+</div>
+</section>
+
+

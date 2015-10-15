@@ -1,0 +1,76 @@
+/*
+Template Name: ECSMART Default
+Template URI: http://www.68ecshop.com/
+Description: 升级打包版橙色版
+Version: 2.7.3
+Author: 商之翼 Team
+Author URI: http://www.68ecshop.com/
+Logo filename: logo.gif
+Template Type: type_0
+*/
+
+a:link, a:hover{ color:#f00;}
+/* ====================
+     头部样式
+==================== */
+.header { background-color:#FF7300; width: 100%; position: relative; height:4.85em; overflow: hidden; text-align: center;line-height: 4.85em;}
+.header .nav ul li.cart a { font-size: 1em; background: url(images/orange/icon_02.png) 50% 50% no-repeat; -webkit-background-size: 2.5em 2.5em; -moz-background-size: 2.5em 2.5em; -o-background-size: 2.5em 2.5em; background-size: 2.5em 2.5em }
+.header .ECS_CARTINFO { display: block; font-size: 1em; font-weight: 700; line-height: 1.4em; color: #fff; padding: 0.1em 0.5em; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em; -ms-border-radius: 0.3em; -o-border-radius: 0.3em; border-radius: 0.3em; background: #ffc703; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; overflow: hidden; position: absolute; right: 0.4em; top: 0.7em }
+.header_03 { background-color: #FF7300;}
+header nav.ect-nav { top: 0; border-top: none; z-index: 100; position: fixed; }
+.header_03 .ECS_CARTINFO { display: block; font-size: 1em; font-weight: 700; line-height: 1.4em; color: #fff; padding: 0.1em 0.5em; -webkit-border-radius: 0.3em; -moz-border-radius: 0.3em; -ms-border-radius: 0.3em; -o-border-radius: 0.3em; border-radius: 0.3em; background: #ffc703; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; overflow: hidden; position: absolute; right: 0.4em; top: 0.7em }
+.logo { display: block; color: #fff; width: 100%; text-align: center; height: 50px; background: url(images/orange/logo.png) no-repeat center center; }
+.top_bt { position: absolute; left: 15px; top: 0px;font-size: 1em;width: 3.5em;height: 4.85em;text-indent: -999em;background: url(images/orange/cate_btn.png) no-repeat scroll 50% 50%; display: inline-block; z-index:999; background-size:2.5em 2.5em}
+.top_home { background: url(images/orange/index.png) no-repeat scroll 50% 50% ; position: absolute; left: 15px; top:0px;font-size: 1em;width: 3.5em;height: 4.85em;text-indent: -999em;overflow: hidden;  background-size:1em 2em}
+.user_btn { width: 50px; height: 50px; display: block; background: url(images/orange/user_btn.png) no-repeat right center; position: absolute; top: 0px; right: 15px; }
+.header .more { position: absolute; top: 0; bottom: 0; right: 0; width:.4rem;
+color: transparent; border-left:.1rem solid transparent;
+background-repeat: no-repeat; background: url(images/orange/joe_03.png) no-repeat 50% 50%; background-size: 25px 25px; }
+.header .chome_bg { width: 52px; height: 30px; background: url(images/orange/bt_ico1b.png) no-repeat 0 0; background-size: contain; border: 0; font-size: 14px; position: absolute; top: 9px; border: 0; right: 0; overflow: hidden; display: inline-block; }
+.nav{ background:#FF7300; }
+/*搜索按钮*/
+.fakeInput .search_submit { width: 81px; height: 45px; line-height: 45px; text-indent: 8px; color: #999; border: 0; text-align: left; margin: 0; padding: 0; float: right; background: url(images/orange/search_orange.png) no-repeat right top; background-size: 67px; }
+/*左边线的颜色*/
+.page-index .list .head span { font-size: 1.9em; color: #333; border-left:3px solid #FF7300; padding-left:7px;}
+.hproduct .btn {background: none repeat scroll 0% 0% #FF7300;color: #FFF;}
+.hproduct .price {color: #000;}
+/*首页楼层价格的颜色*/
+.ect-colory {
+    color: #E4393C !important;
+}
+/*底部颜色*/
+.footer { background-color: #f4f4f4;}
+.footer .gl { color:#FF7300 }
+.color-orange .info-nr-menu, .color-orange div { background-color:#FF7300; }
+/*商品分类页字体颜色*/
+.page-category .list_category .category .name {color: #333 }
+/*商品详情页*/
+.product_view .product_info .price {color: #fd6500 }
+.ui-sku .ui-sku-prop a.hover { border: 0.15em #FF6600 solid; background: url(images/orange/test.gif) no-repeat right bottom; }
+.product_view .product_addCart .button { background: #fc6500;}
+.formwidth p input[type=submit] {background: #fc6500; color: #fff;}
+.related_goods_list .price {color: #fc6500;}
+/*登录和注册*/
+.c-btn-orange {background-color:#FF7300; }
+ #tbh5v0 .innercontent .register a{ color:#FF0000; font-size:18px;}
+ /*个人中心*/
+ .photo .top_bg68 { background: url(images/orange/userbg.gif) #ffa1c1 no-repeat right top; }
+ .dingdancaozuo a { color: #ffffff; display: block; background:#FF7300; border-radius: 0.5em; padding: 0em 1em; height: 25px; line-height: 25px; }
+ .c-btn-oran-big1 { display: inline-block; width: 100%; text-align: center; text-decoration: none; color: #fff; background: #FF7300; height: 44px; line-height: 44px; padding: 0; font-size: 16px; border-radius: 5px;-webkit-appearance: none; }
+ .b-grar-g { border-right: 1px solid #dddddd !important; }
+.b-grar-g a{ color: #51545a}
+.tab_check a { color: #ee2222; }
+.t-red-g { color: #cc0000 !important; }
+.b-whl-g { border-left: 1px solid #fff !important; }
+.c-btn-oran-bigjia { display: inline-block; width: 40%; text-align: center; text-decoration: none; color: #fff; background:#FF7300; height: 44px; line-height: 44px; padding: 0; font-size: 16px; border-radius: 5px;-webkit-appearance: none; }
+.c-btn-oran-bigjia1{ display: inline-block; width: 40%; text-align: center; text-decoration: none; color: #fff !important
+; background:#FF7300; height: 44px; line-height: 44px; padding: 0; font-size: 16px; border-radius: 5px;-webkit-appearance: none; margin-left:5%}
+a.redBtn {
+color: #ffffff;
+}
+a.greyBtn{ color:#ffffff}
+a.textlink{ color:#ffffff;}
+.mod_btn {background-color:#FF7300;}
+a.redBtn { background-color:#FF7300;}
+.cartitle {background:#FF7300;}
+.shopdiv{border: 3px solid #FF7300;}

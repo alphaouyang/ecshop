@@ -1,0 +1,10 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="banner">
+  <div id="slider" class="slider" style="overflow: hidden; visibility: visible; list-style: none; position: relative;">
+    <ul id="sliderlist" class="sliderlist" style="position: relative; overflow: hidden; transition: left 600ms ease; -webkit-transition: left 600ms ease; width: 2400px; left: -600px;">
+
+      <li style="float: left; display: block; width: 600px;"><span><a  href="javacript:void(0)"><img title="" width="100%" src="{$gb_goods.goods_img}}"></a></span></li>
+    </ul>
+  </div>
+</div>
+<div class="s_bottom"></div>
